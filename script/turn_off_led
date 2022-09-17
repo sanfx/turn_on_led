@@ -1,0 +1,9 @@
+import RPi.GPIO as GPIO
+
+LED = 24
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(LED, GPIO.OUT)
+print("LED off")
+GPIO.output(LED, GPIO.LOW)
