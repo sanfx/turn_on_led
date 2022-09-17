@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+
+import os
+import sys
+
+import RPi.GPIO as GPIO
+
+LED = 24 # GPIO PIN 24
+
+def main(state=True):
+    """Turns on LED on GPIO when called.
+    """
+    if state:
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setwarnings(False)
+        GPIO.setup(LED, GPIO.OUT)
+        print("LED is on")
+    else:
+        print("LED off")
+        GPIO.output(LED, GPIO.LOW)
+
+if __name__ == '__main__':
+    main(state=bool(sys.argv[1]))

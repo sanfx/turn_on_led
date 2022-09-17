@@ -1,0 +1,16 @@
+[Unit]
+Description=Service to check turn on LED when ansible deployment is in progress.
+After=multi-user.target
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+Type=idle
+ExecStart=/usr/bin/python3 /home/ansible/stacks/notify/turn_on_led/script/turn_on_led 1
+ExecStop=/usr/bin/python3 /home/ansible/stacks/notify/turn_on_led/script/turn_on_led 0
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target
